@@ -3,13 +3,15 @@ import { Formik } from "formik";
 import * as yup from "yup";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../../components/header";
+import axios from "axios";
 
 const AddMember = () => {
   const isNonMobile = useMediaQuery("(min-width:600px)");
 
 const handleFormSubmit = (values) => {
-  console.log(values);
-  };
+    console.log(values);
+    axios.post("http://localhost:3000/addMember", values);
+    };
 
   return (
     <Box m="20px">
