@@ -4,14 +4,25 @@ import * as yup from "yup";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../../components/header";
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddMember = () => {
   const isNonMobile = useMediaQuery("(min-width:600px)");
 
-const handleFormSubmit = (values) => {
-    console.log(values);
-    axios.post("http://localhost:3000/addMember", values);
-    };
+  const handleFormSubmit = async (values) => {
+    try {
+      const response = await axios.post('http://localhost:3000/addMember', values);
+
+      if (response.status === 200) {
+        toast.success('Member added successfully'); // Show success notification
+      } else {
+        toast.error('Failed to add member'); // Show error notification
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
 
   return (
     <Box m="20px">
@@ -125,7 +136,7 @@ const handleFormSubmit = (values) => {
             display="flex" 
             justifyContent="flex-end" 
             mt="20px" > 
-            <Button type="submit" color="secondary" variant="contained">
+            <Button color="secondary" variant="contained">
                 Scan Face
               </Button>
               <Button type="submit" color="secondary" variant="contained">
@@ -135,6 +146,7 @@ const handleFormSubmit = (values) => {
           </form>
         )}
       </Formik>
+      <ToastContainer position="bottom-right" autoClose={5000} />
     </Box>
   );
 };
