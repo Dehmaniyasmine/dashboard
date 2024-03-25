@@ -1,4 +1,4 @@
-import { Box, Button, TextField, Stack } from "@mui/material";
+import { Box, Button, TextField, Stack, Grid, Typography } from "@mui/material";
 import { Formik } from "formik";
 import * as yup from "yup";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -6,10 +6,13 @@ import Header from "../../components/header";
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import handleScanFace from "./handleScanFace";
+import { useState, useRef } from 'react';
 
-const AddMember = () => {
-  const isNonMobile = useMediaQuery("(min-width:600px)");
+const addMember = () => {
+  const isNonMobile = useMediaQuery("(min-width:600px)"); 
 
+  //handle form data
   const handleFormSubmit = async (values) => {
     try {
       const response = await axios.post('http://localhost:3000/addMember', values);
@@ -24,11 +27,26 @@ const AddMember = () => {
     }
   };
 
-  return (
-    <Box m="20px">
-      <Header title="ADD MEMBER" subtitle="Add a new member" />
+  //handle face scan
+  const handleScanFace = () => {
 
-      <Formik
+  };
+
+  return(
+    <Box
+    display='flex'
+    flexDirection='column'
+    m="20px"
+    >
+    <Header title="Add Member" subtitle="Add a new member to the system" />
+    <Box
+    display='flex'
+    flexDirection='row'
+    >
+    <Box
+        sx = {{width: '60%'}}
+    >
+    <Formik
         onSubmit={handleFormSubmit}
         initialValues={initialValues}
         validationSchema={checkoutSchema}
@@ -41,10 +59,11 @@ const AddMember = () => {
           handleChange,
           handleSubmit,
         }) => (
+          
           <form onSubmit={handleSubmit}>
             <Box
               display="grid"
-              gap="30px"
+              gap="20px"
               gridTemplateColumns="repeat(4, minmax(0, 1fr))"
               sx={{
                 "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
@@ -129,8 +148,8 @@ const AddMember = () => {
                 sx={{ gridColumn: "span 4" }}
               />
             </Box>
-
             <Stack 
+            sx = {{mt: "20px"}}
             spacing={2}
             direction="row"
             display="flex" 
@@ -142,15 +161,23 @@ const AddMember = () => {
               <Button type="submit" color="secondary" variant="contained">
                 Create New User
               </Button>
-            </Stack>
+        </Stack>
+        <ToastContainer position="bottom-right" autoClose={5000} />
           </form>
         )}
       </Formik>
-      <ToastContainer position="bottom-right" autoClose={5000} />
+    </Box> 
+    <Box
+      sx = {{width: '40%'}}
+    >
+      {/* Open Webcam Here */}
+      
+    </Box> 
+    </Box>
     </Box>
   );
-};
 
+};
 const phoneRegExp =
   /^((\+[1-9]{1,4}[ -]?)|(\([0-9]{2,3}\)[ -]?)|([0-9]{2,4})[ -]?)*?[0-9]{3,4}[ -]?[0-9]{3,4}$/;
 
@@ -174,5 +201,4 @@ const initialValues = {
   clearanceLevel: "",
   department: "",
 };
-
-export default AddMember;
+export default addMember;

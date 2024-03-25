@@ -3,6 +3,7 @@ import { Sidebar, Menu, MenuItem } from 'react-pro-sidebar';
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
 import { tokens } from "../../theme";
+import adminPhoto from "../../assets/user.png";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';
 import PersonRemoveAlt1OutlinedIcon from '@mui/icons-material/PersonRemoveAlt1Outlined';
@@ -75,7 +76,7 @@ const SideBar = () => {
                   alt="Admin Profile Picture"
                   width="100px"
                   height="100px"
-                  src={`../../assets/user.png`}
+                  src= {adminPhoto}
                   style={{ cursor: "pointer", borderRadius: "50%" }}
                 />
               </Box>
@@ -86,7 +87,7 @@ const SideBar = () => {
                   fontWeight="bold"
                   sx={{ m: "10px 0 0 0" }}
                 >
-                  Khedhr karawita
+                  Mohamad Sombol
                 </Typography>
                 <Typography variant="h6" color={colors.blueAccent[500]}>
                   VP Fancy Admin
