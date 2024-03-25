@@ -6,11 +6,14 @@ import Header from "../../components/header";
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import handleScanFace from "./handleScanFace";
 import { useState, useRef } from 'react';
+import Webcam from "react-webcam";
 
 const addMember = () => {
   const isNonMobile = useMediaQuery("(min-width:600px)"); 
+  const [webcamOpen, setWebcamOpen] = useState(false);
+  const webcamRef = useRef(null);
+  const [picture, setPicture] = useState(null);
 
   //handle form data
   const handleFormSubmit = async (values) => {
@@ -27,9 +30,10 @@ const addMember = () => {
     }
   };
 
-  //handle face scan
-  const handleScanFace = () => {
-
+  const capture = () => {
+    const imageSrc = webcamRef.current.getScreenshot();
+    setPicture(imageSrc);
+    setWebcamOpen(false); // Close webcam after taking picture
   };
 
   return(
@@ -148,31 +152,37 @@ const addMember = () => {
                 sx={{ gridColumn: "span 4" }}
               />
             </Box>
-            <Stack 
-            sx = {{mt: "20px"}}
-            spacing={2}
-            direction="row"
-            display="flex" 
-            justifyContent="flex-end" 
-            mt="20px" > 
-            <Button color="secondary" variant="contained">
-                Scan Face
-              </Button>
-              <Button type="submit" color="secondary" variant="contained">
-                Create New User
-              </Button>
-        </Stack>
+            <Stack spacing={2} direction="row" justifyContent="flex-end" mt={2}>
+                  {!webcamOpen && (
+                    <Button onClick={() => setWebcamOpen(true)} color="secondary" variant="contained">
+                      Scan Face
+                    </Button>
+                  )}
+                  {webcamOpen && (
+                    <Button onClick={capture} color="secondary" variant="contained">
+                      Take Picture
+                    </Button>
+                  )}
+                  <Button type="submit" color="secondary" variant="contained">
+                    Create New User
+                  </Button>
+                </Stack>
         <ToastContainer position="bottom-right" autoClose={5000} />
           </form>
         )}
       </Formik>
     </Box> 
-    <Box
-      sx = {{width: '40%'}}
-    >
-      {/* Open Webcam Here */}
-      
-    </Box> 
+    <Box sx={{ width: '40%', borderRadius: 8, overflow: 'hidden', marginLeft: '20px' }}>
+  {/* Open Webcam Here */}
+  {webcamOpen && (
+    <Webcam
+      audio={false}
+      ref={webcamRef}
+      screenshotFormat="image/jpeg"
+      style={{ width: '100%', height: '100%', borderRadius: 'inherit' }}
+    />
+  )}
+</Box> 
     </Box>
     </Box>
   );
