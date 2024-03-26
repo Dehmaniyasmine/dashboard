@@ -1,4 +1,4 @@
-import { Box, Button, TextField, Stack, Grid, Typography } from "@mui/material";
+import { Box, Button, TextField, Stack} from "@mui/material";
 import { Formik } from "formik";
 import * as yup from "yup";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -21,16 +21,13 @@ const addMember = () => {
       const response = await axios.post('http://localhost:3000/addMember', values);
   
       if (response.status === 200) {
-        toast.success('Member added successfully'); // Show success notification
+        toast.success(response.data.message); 
       }
     } catch (error) {
       console.error('Error:', error);
-      // Check if the error is an AxiosError and has response data
       if (error.response && error.response.data && error.response.data.message) {
-        // Display error message from response data using toast.error
         toast.error(error.response.data.message); 
       } else {
-        // Display a general error message if no specific error message is available
         toast.error('An error occurred. Please try again later.');
       }
     }
@@ -40,8 +37,7 @@ const addMember = () => {
   const capture = () => {
     const imageSrc = webcamRef.current.getScreenshot();
     setPicture(imageSrc);
-    console.log('Picture captured:', imageSrc); // Add console.log statement
-    setWebcamOpen(false); // Close webcam after taking picture
+    setWebcamOpen(false); 
   };
 
   return(
