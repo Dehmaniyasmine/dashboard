@@ -19,20 +19,28 @@ const addMember = () => {
   const handleFormSubmit = async (values) => {
     try {
       const response = await axios.post('http://localhost:3000/addMember', values);
-
+  
       if (response.status === 200) {
         toast.success('Member added successfully'); // Show success notification
-      } else {
-        toast.error('Failed to add member'); // Show error notification
       }
     } catch (error) {
       console.error('Error:', error);
+      // Check if the error is an AxiosError and has response data
+      if (error.response && error.response.data && error.response.data.message) {
+        // Display error message from response data using toast.error
+        toast.error(error.response.data.message); 
+      } else {
+        // Display a general error message if no specific error message is available
+        toast.error('An error occurred. Please try again later.');
+      }
     }
   };
+  
 
   const capture = () => {
     const imageSrc = webcamRef.current.getScreenshot();
     setPicture(imageSrc);
+    console.log('Picture captured:', imageSrc); // Add console.log statement
     setWebcamOpen(false); // Close webcam after taking picture
   };
 
@@ -74,10 +82,10 @@ const addMember = () => {
               }}
             >
               <TextField
+                label="First Name"
                 fullWidth
                 variant="filled"
                 type="text"
-                label="First Name"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.firstName}
@@ -87,10 +95,10 @@ const addMember = () => {
                 sx={{ gridColumn: "span 2" }}
               />
               <TextField
+                label="Last Name"
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Last Name"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.lastName}
@@ -100,10 +108,10 @@ const addMember = () => {
                 sx={{ gridColumn: "span 2" }}
               />
                 <TextField
+                label="Department"
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Department"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.department}
@@ -113,10 +121,10 @@ const addMember = () => {
                 sx={{ gridColumn: "span 2" }}
               />
               <TextField
+                label="Clearance Level"
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Clearance Level"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.clearanceLevel}
@@ -126,10 +134,10 @@ const addMember = () => {
                 sx={{ gridColumn: "span 2" }}
               />
               <TextField
+                label="Email"
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Email"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.email}
@@ -139,10 +147,10 @@ const addMember = () => {
                 sx={{ gridColumn: "span 4" }}
               />
               <TextField
+                label="Contact Number"
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Contact Number"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.contact}
