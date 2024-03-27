@@ -10,6 +10,8 @@ import ViewCenter from "./scenes/viewCenter";
 import ViewTeam from "./scenes/viewTeam";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
+import axios from "axios";
+axios.defaults.baseURL = "http://localhost:3000";
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -20,16 +22,16 @@ function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <div className="app">
-          <Sidebar isSidebar={isSidebar} /> 
+          <Sidebar isSidebar={isSidebar} />
           <main className="content">
             <Topbar setIsSidebar={setIsSidebar} />
             <Routes>
-              <Route path="/" element={<Dashboard/>} />
-              <Route path="/addMember" element={<AddMember/>} />
-              <Route path="/removeMember" element={<RemoveMember/>} />
-              <Route path="/updateAccess" element={<UpdateAccess/>} />
-              <Route path="/viewCenter" element={<ViewCenter/>} />
-              <Route path="/viewTeam" element={<ViewTeam/>} />
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/addMember" element={<AddMember />} />
+              <Route path="/removeMember" element={<RemoveMember />} />
+              <Route path="/updateAccess" element={<UpdateAccess />} />
+              <Route path="/viewCenter" element={<ViewCenter />} />
+              <Route path="/viewTeam" element={<ViewTeam />} />
             </Routes>
           </main>
         </div>
