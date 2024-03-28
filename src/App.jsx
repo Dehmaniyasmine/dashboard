@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
+import { CssBaseline, ThemeProvider } from "@mui/material";
 import Topbar from "./scenes/global/Topbar";
 import Sidebar from "./scenes/global/Sidebar";
 import Dashboard from "./scenes/dashboard";
@@ -8,7 +9,6 @@ import RemoveMember from "./scenes/removeMember";
 import UpdateAccess from "./scenes/updateAccess";
 import ViewCenter from "./scenes/viewCenter";
 import ViewTeam from "./scenes/viewTeam";
-import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
 import axios from "axios";
 axios.defaults.baseURL = "http://localhost:3000";

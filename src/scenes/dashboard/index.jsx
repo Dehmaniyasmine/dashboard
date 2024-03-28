@@ -1,8 +1,9 @@
 import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
-import { Box, IconButton, Typography, useTheme } from "@mui/material";
+import { IconButton, Typography, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
 import { tokens } from "../../theme";
 import Header from "../../components/header";
+import { Box } from "@mui/system";
 
 const Dashboard = () => {
   const theme = useTheme();

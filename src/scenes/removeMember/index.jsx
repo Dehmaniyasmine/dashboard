@@ -13,12 +13,12 @@ import {
   DialogContent,
   Button,
 } from "@mui/material";
-import Box from "@mui/material/Box";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { tokens } from "../../theme";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Header from "../../components/header";
+import { Box } from "@mui/system";
 
 const RemoveMember = () => {
   const theme = useTheme();
