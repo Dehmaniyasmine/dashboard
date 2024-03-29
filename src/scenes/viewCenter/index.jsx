@@ -1,5 +1,5 @@
 import Header from "../../components/header";
-import {Button, Stack } from "@mui/material";
+import { Button, Stack } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { tokens } from "../../theme";
 import { Box } from "@mui/system";
@@ -30,7 +30,6 @@ const ViewCenter = () => {
           </Button>
         </Stack>
       </Box>
-      
     </Box>
   );
 };

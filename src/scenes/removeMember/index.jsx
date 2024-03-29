@@ -74,8 +74,11 @@ const RemoveMember = () => {
         subtitle="Remove a member from the system"
       />
       <Box
+      //alignSelf={"center"}
         sx={{
           borderRadius: "10px",
+          width: "50%",
+          //backgroundColor: colors.grey[900] ,
         }}
       >
         <List>

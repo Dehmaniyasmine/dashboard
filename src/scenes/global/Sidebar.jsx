@@ -17,7 +17,7 @@ import { Box } from "@mui/system";
 const SideBar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  const [isCollapsed, setIsCollapsed] = useState(true);
+  const [isCollapsed, setIsCollapsed] = useState(false);
 
   return (
     <Box backgroundColor={colors.primary[400]}>
@@ -121,12 +121,12 @@ const SideBar = () => {
               >
                 Remove member
               </MenuItem>
-              <MenuItem
+              {/*<MenuItem
                 component={<Link to="/updateAccess" />}
                 icon={<UpdateOutlinedIcon />}
               >
                 Update access
-              </MenuItem>
+              </MenuItem>*/}
 
               {!isCollapsed && (
                 <Typography

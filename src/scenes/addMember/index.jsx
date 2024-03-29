@@ -8,6 +8,8 @@ import { Button, TextField, Stack } from "@mui/material";
 import "react-toastify/dist/ReactToastify.css";
 import { useState, useRef } from "react";
 import Webcam from "react-webcam";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
 import { Box } from "@mui/system";
 
 const addMember = () => {
@@ -16,6 +18,8 @@ const addMember = () => {
   const webcamRef = useRef(null);
   const [picture, setPicture] = useState(null);
   const [pictureTaken, setPictureTaken] = useState(false);
+  const [department, setDepartment] = useState("");
+
 
   //handle form data
   const handleFormSubmit = async (values, { resetForm }) => {
@@ -114,7 +118,25 @@ const addMember = () => {
                     error={!!touched.department && !!errors.department}
                     helperText={touched.department && errors.department}
                     sx={{ gridColumn: "span 2" }}
-                  />
+                />
+
+                  {/*<Select
+                    label="Department"
+                    fullWidth
+                    variant="filled"
+                    type="text"
+                    onBlur={handleBlur}
+                    onChange={handleChange}
+                    value={values.department}
+                    name="department"
+                    error={!!touched.department && !!errors.department}
+                    helperText={touched.department && errors.department}
+                    sx={{ gridColumn: "span 2" }}>
+                    <MenuItem value="IT">IT</MenuItem>
+                    <MenuItem value="HR">HR</MenuItem>
+                    <MenuItem value="Finance">Finance</MenuItem>
+                    <MenuItem value="Marketing">Marketing</MenuItem>
+                </Select>*/}
 
                   <TextField
                     label="Clearance Level"
