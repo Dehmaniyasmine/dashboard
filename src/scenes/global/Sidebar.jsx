@@ -138,16 +138,16 @@ const SideBar = () => {
                 </Typography>
               )}
               <MenuItem
-                component={<Link to="/viewCenter" />}
-                icon={<VisibilityOutlinedIcon />}
-              >
-                View center
-              </MenuItem>
-              <MenuItem
                 component={<Link to="/viewTeam" />}
                 icon={<Groups2OutlinedIcon />}
               >
                 View Team
+              </MenuItem>
+              <MenuItem
+                component={<Link to="/viewCenter" />}
+                icon={<VisibilityOutlinedIcon />}
+              >
+                View center
               </MenuItem>
               <MenuItem icon={<HistoryIcon />}>History</MenuItem>
             </Box>
