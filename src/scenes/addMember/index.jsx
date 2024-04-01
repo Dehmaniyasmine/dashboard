@@ -20,7 +20,6 @@ const addMember = () => {
   const [pictureTaken, setPictureTaken] = useState(false);
   const [department, setDepartment] = useState("");
 
-
   //handle form data
   const handleFormSubmit = async (values, { resetForm }) => {
     try {
@@ -118,7 +117,7 @@ const addMember = () => {
                     error={!!touched.department && !!errors.department}
                     helperText={touched.department && errors.department}
                     sx={{ gridColumn: "span 2" }}
-                />
+                  />
 
                   {/*<Select
                     label="Department"
@@ -183,6 +182,7 @@ const addMember = () => {
                   direction="row"
                   justifyContent="flex-end"
                   mt={2}
+                  alignSelf="flex-end"
                 >
                   {!webcamOpen && (
                     <Button
@@ -219,9 +219,11 @@ const addMember = () => {
         <Box
           sx={{
             width: "40%",
+            height: "relative",
             borderRadius: 8,
             overflow: "hidden",
             marginLeft: "20px",
+            position: "relative",
           }}
         >
           {/* Open Webcam Here */}
@@ -230,7 +232,12 @@ const addMember = () => {
               audio={false}
               ref={webcamRef}
               screenshotFormat="image/jpeg"
-              style={{ width: "100%", height: "100%", borderRadius: "inherit" }}
+              mirrored={true}
+              style={{
+                width: "100%",
+                height: "100%",
+                borderRadius: 8,
+              }}
             />
           )}
         </Box>
