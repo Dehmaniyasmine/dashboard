@@ -20,9 +20,25 @@ const addMember = () => {
 
   //handle form data
   const handleFormSubmit = async (values, { resetForm }) => {
-    try { 
-      const response = await axios.post("/addMember", values);
-
+    try {
+      // Create FormData object
+      const formData = new FormData();
+      
+      // Append form values to FormData
+      Object.keys(values).forEach((key) => {
+        formData.append(key, values[key]);
+      });
+      
+      // Append picture to FormData
+      formData.append("image", dataURItoBlob(picture));
+  
+      // Send POST request with FormData
+      const response = await axios.post("/addMember", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      });
+  
       if (response.status === 200) {
         toast.success(response.data.message);
         resetForm();
@@ -40,6 +56,7 @@ const addMember = () => {
       }
     }
   };
+  
 
   const capture = () => {
     const imageSrc = webcamRef.current.getScreenshot();
@@ -47,6 +64,18 @@ const addMember = () => {
     setWebcamOpen(false);
     setPictureTaken(true);
   };
+  
+  const dataURItoBlob = (dataURI) => {
+    const byteString = atob(dataURI.split(",")[1]);
+    const mimeString = dataURI.split(",")[0].split(":")[1].split(";")[0];
+    const ab = new ArrayBuffer(byteString.length);
+    const ia = new Uint8Array(ab);
+    for (let i = 0; i < byteString.length; i++) {
+      ia[i] = byteString.charCodeAt(i);
+    }
+    return new Blob([ab], { type: mimeString });
+  };
+  
 
   return (
     <Box display="flex" flexDirection="column" m="20px">
