@@ -8,8 +8,6 @@ import { Button, TextField, Stack } from "@mui/material";
 import "react-toastify/dist/ReactToastify.css";
 import { useState, useRef } from "react";
 import Webcam from "react-webcam";
-import Select from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
 import { Box } from "@mui/system";
 
 const addMember = () => {
@@ -22,7 +20,7 @@ const addMember = () => {
 
   //handle form data
   const handleFormSubmit = async (values, { resetForm }) => {
-    try {
+    try { 
       const response = await axios.post("/addMember", values);
 
       if (response.status === 200) {
@@ -118,24 +116,6 @@ const addMember = () => {
                     helperText={touched.department && errors.department}
                     sx={{ gridColumn: "span 2" }}
                   />
-
-                  {/*<Select
-                    label="Department"
-                    fullWidth
-                    variant="filled"
-                    type="text"
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    value={values.department}
-                    name="department"
-                    error={!!touched.department && !!errors.department}
-                    helperText={touched.department && errors.department}
-                    sx={{ gridColumn: "span 2" }}>
-                    <MenuItem value="IT">IT</MenuItem>
-                    <MenuItem value="HR">HR</MenuItem>
-                    <MenuItem value="Finance">Finance</MenuItem>
-                    <MenuItem value="Marketing">Marketing</MenuItem>
-                </Select>*/}
 
                   <TextField
                     label="Clearance Level"
