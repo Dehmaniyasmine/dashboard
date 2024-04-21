@@ -88,7 +88,7 @@ const ViewTeam = () => {
             key={employee._id}
             variant="outlined"
             sx={{ marginBottom: 2, position: "relative" }}
-            onClick={() => handleCardClick(employee)} // Call handleCardClick when a card is clicked
+            onClick={() => handleCardClick(employee)} 
           >
             <CardActionArea>
               <CardContent>
