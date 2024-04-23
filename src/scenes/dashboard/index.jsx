@@ -3,8 +3,9 @@ import { useTheme } from "@mui/material";
 import { tokens } from "../../theme";
 import Header from "../../components/header";
 import Item from "../../components/item";
+import BarChart from "../../components/bar";
 import axios from "axios";
-import { Card, CardActionArea, CardContent, Typography } from "@mui/material";
+import { Card, CardContent, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 
 const Dashboard = () => {
@@ -32,7 +33,7 @@ const Dashboard = () => {
           display="flex"
           flexDirection="row"
           backgroundColor={colors.primary[400]}
-          sx={{ borderRadius: 5,p:2 }}
+          sx={{ borderRadius: 5, p: 2 }}
           width="30%"
         >
           <Box>
@@ -41,32 +42,55 @@ const Dashboard = () => {
         </Box>
         <Box
           display="flex"
-          flexDirection="row"
-          backgroundColor={colors.primary[400]}
-          sx={{ borderRadius: 5,p:2 }}
+          flexDirection="column"
           width="30%"
           marginLeft={5}
           marginRight={5}
-
+          justifyContent={"space-between"}
         >
-          <Item title="Network Health" subtitle="Check the network status" />
+          <Box
+            display="flex"
+            flexDirection="column"
+            backgroundColor={colors.primary[400]}
+            sx={{ borderRadius: 5, p: 2, maxHeight: "34vh" }}
+          >
+            <Item
+              title="Employee Activity"
+              subtitle="Viewing last 7 days activity"
+            />
+            <BarChart />
+          </Box>
+          <Box
+            display="flex"
+            flexDirection="column"
+            backgroundColor={colors.primary[400]}
+            sx={{ borderRadius: 5, p: 2, maxHeight: "34vh"}}
+          ></Box>
         </Box>
+
         <Box
           display="flex"
           flexDirection="column"
           backgroundColor={colors.primary[400]}
-          sx={{ borderRadius: 5 ,p:2 }}
-          width="30%"
-          
+          sx={{
+            borderRadius: 5,
+            p: 2,
+            maxHeight: "70vh",
+            overflowY: "auto",
+            position: "relative",
+            width: "30%",
+          }}
         >
-          <Item title="Recent logins" subtitle="" />
-          <Box borderRadius={2} p={1}>
-          {logs.map((log) => (
-            <Card
-              key={log._id}
-              variant="outlined"
-              sx={{ marginBottom: 2, position: "relative" }}
-            >
+          <Box sx={{ position: "sticky", top: "0", zIndex: 1 }}>
+            <Item title="Recent logins" subtitle="" />
+          </Box>
+          <Box borderRadius={2} p={1} sx={{ overflowY: "auto", flexGrow: 1 }}>
+            {logs.map((log) => (
+              <Card
+                key={log._id}
+                variant="outlined"
+                sx={{ marginBottom: 2, position: "relative" }}
+              >
                 <CardContent>
                   <Typography variant="h5" component="div">
                     {`${log.firstName} ${log.lastName} `}
@@ -75,8 +99,8 @@ const Dashboard = () => {
                     Has accessed the {`${log.department}`} department
                   </Typography>
                 </CardContent>
-            </Card>
-          ))}
+              </Card>
+            ))}
           </Box>
         </Box>
       </Box>
