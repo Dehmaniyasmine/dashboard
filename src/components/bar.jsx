@@ -18,7 +18,7 @@ const BarChart = ({ isDashboard = false }) => {
         const formattedData = data.map(entry => ({
           day: `${entry._id.day}`,
           count: entry.count,
-          color: colors.blueAccent[600]
+          color: colors.blueAccent[500]
         }));
         setLogData(formattedData.reverse());
       } catch (error) {
@@ -47,9 +47,7 @@ const BarChart = ({ isDashboard = false }) => {
           tickSize: 5,
           tickPadding: 5,
           tickRotation: 0,
-          legend: 'Day',
           legendPosition: 'middle',
-          legendOffset: 32,
           format: value => `${Math.round(value)}`
         }}
         axisLeft={null}

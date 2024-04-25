@@ -21,13 +21,12 @@ const SideBar = () => {
 
   return (
     <Box backgroundColor={colors.primary[400]}>
-      <Sidebar collapsed={isCollapsed} backgroundColor="primary[400]">
+      <Sidebar collapsed={isCollapsed} backgroundColor="primary[500]">
         <Box>
           <Menu
             iconShape="square"
             menuItemStyles={{
               button: ({ level, active, disabled }) => {
-                // only apply styles on first level elements of the tree
                 if (level === 0)
                   return {
                     color: disabled ? "primary" : undefined,

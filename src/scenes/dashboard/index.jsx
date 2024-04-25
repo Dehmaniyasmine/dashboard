@@ -4,6 +4,7 @@ import { tokens } from "../../theme";
 import Header from "../../components/header";
 import Item from "../../components/item";
 import BarChart from "../../components/bar";
+import WebSocketClient from "../../components/networkHealth";
 import axios from "axios";
 import { Card, CardContent, Typography } from "@mui/material";
 import { Box } from "@mui/system";
@@ -31,13 +32,16 @@ const Dashboard = () => {
       <Box display="flex" flexDirection="row" justifyContent={"space-bewtween"}>
         <Box
           display="flex"
-          flexDirection="row"
+          flexDirection="column"
           backgroundColor={colors.primary[400]}
           sx={{ borderRadius: 5, p: 2 }}
           width="30%"
         >
           <Box>
             <Item title="Network Health" subtitle="Check the network status" />
+          </Box>
+          <Box>
+            <WebSocketClient />
           </Box>
         </Box>
         <Box
