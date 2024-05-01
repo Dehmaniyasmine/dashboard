@@ -29,13 +29,18 @@ const Dashboard = () => {
   return (
     <Box display="flex" flexDirection="column" m="20px">
       <Header title="Home Page" subtitle="Welcome back!" />
-      <Box display="flex" flexDirection="row" justifyContent={"space-bewtween"}>
+      <Box
+        display="flex"
+        flexDirection="row"
+        justifyContent={"space-bewtween"}
+        marginLeft={1}
+      >
         <Box
           display="flex"
           flexDirection="column"
           backgroundColor={colors.primary[400]}
-          sx={{ borderRadius: 5, p: 2 }}
-          width="30%"
+          sx={{ borderRadius: 5, p: 2, height: "70vh" }}
+          width="32%"
         >
           <Box>
             <Item title="Network Health" subtitle="Check the network status" />
@@ -47,16 +52,16 @@ const Dashboard = () => {
         <Box
           display="flex"
           flexDirection="column"
-          width="30%"
-          marginLeft={5}
-          marginRight={5}
+          width="32%"
+          marginLeft={2}
+          marginRight={2}
           justifyContent={"space-between"}
         >
           <Box
             display="flex"
             flexDirection="column"
             backgroundColor={colors.primary[400]}
-            sx={{ borderRadius: 5, p: 2, maxHeight: "34vh" }}
+            sx={{ borderRadius: 5, p: 2, height: "34vh" }}
           >
             <Item
               title="Employee Activity"
@@ -68,7 +73,7 @@ const Dashboard = () => {
             display="flex"
             flexDirection="column"
             backgroundColor={colors.primary[400]}
-            sx={{ borderRadius: 5, p: 2, maxHeight: "34vh"}}
+            sx={{ borderRadius: 5, p: 2, height: "34vh" }}
           ></Box>
         </Box>
 
@@ -79,10 +84,10 @@ const Dashboard = () => {
           sx={{
             borderRadius: 5,
             p: 2,
-            maxHeight: "70vh",
+            height: "70vh",
             overflowY: "auto",
             position: "relative",
-            width: "30%",
+            width: "32%",
           }}
         >
           <Box sx={{ position: "sticky", top: "0", zIndex: 1 }}>

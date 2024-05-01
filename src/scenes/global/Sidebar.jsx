@@ -85,10 +85,10 @@ const SideBar = () => {
                     fontWeight="bold"
                     sx={{ m: "10px 0 0 0" }}
                   >
-                    Khaled Keshmiri
+                    Saul Goodman
                   </Typography>
                   <Typography variant="h6" color={colors.blueAccent[500]}>
-                    Admin {/*role*/}
+                    Admin 
                   </Typography>
                 </Box>
               </Box>
