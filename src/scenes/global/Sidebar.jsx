@@ -17,7 +17,7 @@ import { Box } from "@mui/system";
 const SideBar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(true);
 
   return (
     <Box backgroundColor={colors.primary[400]}>
@@ -85,7 +85,7 @@ const SideBar = () => {
                     fontWeight="bold"
                     sx={{ m: "10px 0 0 0" }}
                   >
-                    Saul Goodman
+                    Admin name
                   </Typography>
                   <Typography variant="h6" color={colors.blueAccent[500]}>
                     Admin 
